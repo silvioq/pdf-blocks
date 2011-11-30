@@ -214,12 +214,17 @@ sub  cell($$$$$$$$$$){
   my( $self, $x1, $y1, $x2, $y2, $text, $font_name, $font_size, $align, $bold, $italic ) = @_;
   # Set the font
   my $font = $self->_resolve_font( $font_name || 'Helvetica', $bold, $italic );
-  $self->_text->font( $font, $font_size || 12 );
+  $font_size = 12 unless $font_size;
+  my $lead = $font_size * 1.2;
+  if( $lead > $y2 - $y1 ){
+    $y2 = $y1 + $lead + 0.5;
+  }
+  $self->_text->font( $font, $font_size );
   text_block( $self->_text, $text,
     -x => $x1 + $self->{mt} + $self->{lx},
-    -y => $self->{_curr_y} - $y1,
+    -y => $self->{_curr_y} - $y1 - $font_size,
     -w => $x2 - $x1, -h => $y2 - $y1,
-    -lead => ( $font_size || 12 ) * 1.2,
+    -lead => $lead,
     -align => $align || 'left' );
   return  $self;
 }
