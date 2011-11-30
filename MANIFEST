@@ -1,0 +1,8 @@
+Changes
+Makefile.PL
+MANIFEST
+README
+t/PDF-Blocks.t
+lib/PDF/Blocks.pm
+lib/PDF/Blocks/Dummy.pm
+lib/PDF/Blocks/Print.pm
