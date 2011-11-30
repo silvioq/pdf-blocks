@@ -128,7 +128,7 @@ sub  print_block{
   die( "Block $name does not exists" ) unless $block;
   $self->{printer} = PDF::Blocks::Print->new( $self )
     if( !$self->{printer} );
-  $options = {} unless $options;
+  $options = { advance => 1 } unless $options;
   my $printer = $self->{printer};
   $printer->set_skip( $block->{skip}, $options->{advance} );
   $block->{code}->($printer);

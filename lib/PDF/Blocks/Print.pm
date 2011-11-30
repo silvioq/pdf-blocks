@@ -33,7 +33,7 @@ sub  eject{
 
 sub  skip{
   my $self = shift;
-  $self->{_curr_y} += $self->{skip} if $self->{advance};
+  $self->{_curr_y} -= $self->{skip} if $self->{advance};
 }
 
 
