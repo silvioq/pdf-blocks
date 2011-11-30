@@ -199,10 +199,8 @@ sub  line($$$$){
 }
 sub  rect($$$$$){
   my( $self, $x1, $y1, $x2, $y2, $fill ) = @_;
-  $self->_gfx->move( $x1 + $self->{mt} + $self->{lx},
-      $self->{_curr_y} - $y1 );
-  $self->_gfx->rectxy( $x2 + $self->{mt} + $self->{lx},
-      $self->{_curr_y} - $y2 );
+  $self->_gfx->rectxy( $x1 + $self->{mt} + $self->{lx}, $self->{_curr_y} - $y1,
+      $x2 + $self->{mt} + $self->{lx}, $self->{_curr_y} - $y2 );
   if( $fill ){
     $self->_gfx->fill;
   } else {

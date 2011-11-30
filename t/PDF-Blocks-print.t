@@ -1,5 +1,5 @@
 # vi: set cin sw=2:
-use Test::More tests => 4;
+use Test::More tests => 5;
 BEGIN { use_ok('PDF::Blocks') };
 
 my $block;
@@ -24,5 +24,6 @@ $block->print_block( "cell" );
 
 my $s;
 ok( $s = $block->end );
-ok( length( $s ) == 4249 || length( $s ) == 4250 );
+ok( length( $s ) > 4200 );
+ok( length( $s ) < 4300 );
 is( substr( $s, 0, 4 ), "%PDF" );
