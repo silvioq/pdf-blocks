@@ -229,25 +229,23 @@ sub  cell($$$$$$$$$$){
   return  $self;
 }
 
-=begin
- text_block() is © Rick Measham, 2004-2007. The latest version can be found in the tutorial located at http://rick.measham.id.au/pdf-api2/
-($width_of_last_line, $ypos_of_last_line, $left_over_text) = text_block(
-
-    $text_handler_from_page,
-    $text_to_place,
-    -x        => $left_edge_of_block,
-
-    -y        => $baseline_of_first_line,
-    -w        => $width_of_block,
-
-    -h        => $height_of_block,
-   [-lead     => $font_size * 1.2 | $distance_between_lines,]
-   [-parspace => 0 | $extra_distance_between_paragraphs,]
-   [-align    => "left|right|center|justify|fulljustify",]
-   [-hang     => $optional_hanging_indent,]
-
-);
-=cut
+#  text_block() is © Rick Measham, 2004-2007. The latest version can be found in the tutorial located at http://rick.measham.id.au/pdf-api2/
+# ($width_of_last_line, $ypos_of_last_line, $left_over_text) = text_block(
+# 
+#     $text_handler_from_page,
+#     $text_to_place,
+#     -x        => $left_edge_of_block,
+# 
+#     -y        => $baseline_of_first_line,
+#     -w        => $width_of_block,
+# 
+#     -h        => $height_of_block,
+#    [-lead     => $font_size * 1.2 | $distance_between_lines,]
+#    [-parspace => 0 | $extra_distance_between_paragraphs,]
+#    [-align    => "left|right|center|justify|fulljustify",]
+#    [-hang     => $optional_hanging_indent,]
+# 
+# );
 
 sub text_block {
 
@@ -400,3 +398,76 @@ sub text_block {
 }
 
 1;
+
+__END__
+
+=head1 NAME
+
+PDF::Blocks::Print - Perl extension for blah blah blah
+
+=head1 SYNOPSIS
+
+  use PDF::Blocks;
+  my $block_declaration = PDF::Blocks::new;
+  my $size = 120;
+  $block_declaration->block( 'name', $size, sub{
+    my $print_block_instance = shift; # PDF::Blocks::new;
+    ...
+  }
+
+
+=head2 EXPORT
+
+=over
+
+=item cell
+
+  $print_block_instance->cell( $x1, $y1, $x2, $y2,
+    $text_to_print, 
+    $font_name, # default Helvetica
+    $font_size, # default 12
+    $align,     # default left
+    $bold,      # default 0
+    $italic     # default 0
+    );
+
+Examble
+
+  $block->block( 'name', 200, sub{
+      my $self = shift;
+      $self->cell( 0,0,100,12, "Hello test", "Arial", 12, "left", 0, 0 );
+    });
+
+=item line
+
+  $block->block( 'name', 200, sub{
+      $self->line( $x1, $y1, $x2, $y2 );
+  });
+
+=item line
+
+  $block->block( 'name', 200, sub{
+      $self->rect( $x1, $y1, $x2, $y2, $filled_or_not );
+  });
+
+=back
+
+=head1 SEE ALSO
+
+This class is part of L<Print::Block> package.
+
+=head1 AUTHOR
+
+Silvio, E<lt>silvioq@gmail.comE<gt>
+
+=head1 COPYRIGHT AND LICENSE
+
+text_block() is © Rick Measham, 2004-2007. The latest version can be found in the tutorial located at http://rick.measham.id.au/pdf-api2/
+
+Copyright (C) 2011 by Silvio
+
+This library is free software; you can redistribute it and/or modify
+it under the same terms as Perl itself, either Perl version 5.10.1 or,
+at your option, any later version of Perl 5 you may have available.
+
+=cut
