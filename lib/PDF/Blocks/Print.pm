@@ -212,6 +212,8 @@ sub  rect($$$$$){
 # x1, y1, x2, y2, text, font_name, font_size, align, bold, italic
 sub  cell($$$$$$$$$$){
   my( $self, $x1, $y1, $x2, $y2, $text, $font_name, $font_size, $align, $bold, $italic ) = @_;
+  return unless defined $text;
+  return if $text eq '';
   # Set the font
   my $font = $self->_resolve_font( $font_name || 'Helvetica', $bold, $italic );
   $font_size = 12 unless $font_size;
