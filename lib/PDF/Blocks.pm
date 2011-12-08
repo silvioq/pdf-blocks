@@ -231,8 +231,20 @@ This function adds some block (invoked by name) to every page footer
 
   $pdf_blocks->header('block-name');
 
-=back
 
+=item block
+
+This function declare a print block code.
+
+  $pdf_blocks->block( 'block-name', $height, sub{
+      my $block = shift;
+      ...
+    } );
+
+The param funcition has a code to run when the block is printed. The $block
+param is a L<PDF::Blocks::Print> instance. See doc about class.
+
+=back
 
 =head1 SEE ALSO
 
